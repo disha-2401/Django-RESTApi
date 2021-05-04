@@ -13,6 +13,7 @@ from django.http import HttpResponse, JsonResponse
 
 @csrf_exempt
 def student_api(request):
+    #when user wants to get info of specific student or all student
     if request.method == "GET":
         json_data = request.body
         stream = io.BytesIO(json_data)
@@ -29,6 +30,7 @@ def student_api(request):
         # JsonRender = JSONRenderer().render(serializer.data)
         # return HttpResponse(JsonRender, content_type='application/json')
         return JsonResponse(serializer.data, safe=False)
+    #when user wnats to add student in database
     elif request.method == "POST":
         json_data = request.body
         stream = io.BytesIO(json_data)
@@ -43,6 +45,7 @@ def student_api(request):
         # json_data = JSONRenderer().render(serializer.errors)
         # return HttpResponse(json_data, content_type='application/json')
         return JsonResponse(serializer.errors, safe=False)
+    #when user wants to update student info in database
     elif request.method == "PUT":
         json_data = request.body
         stream = io.BytesIO(json_data)
@@ -60,6 +63,7 @@ def student_api(request):
         # json_data = JSONRenderer().render(serializer.errors)
         # return HttpResponse(json_data, content_type='application/json')
         return JsonResponse(serializer.errors, safe=False)
+    #when user wants to delete a student object based on id
     elif request.method == "DELETE":
         json_data = request.body
         stream = io.BytesIO(json_data)

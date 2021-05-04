@@ -1,3 +1,5 @@
+#this program is only for when w e doct have postman
+
 import requests
 import json
 
