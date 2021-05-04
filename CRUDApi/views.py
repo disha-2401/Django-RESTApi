@@ -28,7 +28,7 @@ def student_api(request):
         serializer = StudentSerialiser(stu, many=True)
         # JsonRender = JSONRenderer().render(serializer.data)
         # return HttpResponse(JsonRender, content_type='application/json')
-        return JsonResponse(serializer.data,safe=False)
+        return JsonResponse(serializer.data, safe=False)
     elif request.method == "POST":
         json_data = request.body
         stream = io.BytesIO(json_data)
