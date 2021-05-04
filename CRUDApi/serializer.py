@@ -13,12 +13,12 @@ class StudentSerialiser(serializers.Serializer):
     def update(self, instance, validated_data):
         print("pehle ye ",instance.name," tha")
         instance.name= validated_data.get('name',instance.name)
-        print("ab ye ",instance.name," hai")
+        print("ab ye ",instance.name," hai 😁")
         print("pehle ye ", instance.roll, " tha")
         instance.roll= validated_data.get('roll',instance.roll)
-        print("ab ye ", instance.roll, " hai")
+        print("ab ye ", instance.roll, " hai 😁")
         print("pehle ye ", instance.city, " tha")
         instance.city=validated_data.get('city',instance.city)
-        print("ab ye ", instance.city, " hai")
+        print("ab ye ", instance.city, " hai 😁")
         instance.save()
         return instance
