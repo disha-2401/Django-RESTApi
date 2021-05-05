@@ -3,7 +3,7 @@
 import requests
 import json
 
-URL = "http://localhost:8000/StudentApi/getStudent"
+URL = "http://localhost:8000/StudentApi/getStudentModel"
 
 
 def get_data(id=None):
@@ -20,8 +20,8 @@ def get_data(id=None):
 
 def post_data():
     data = {
-        'name': 'piyu',
-        'roll': 31,
+        'name': 'vihaan',
+        'roll': 30,
         'city': 'surat'
     }
     json_data = json.dumps(data)
@@ -29,12 +29,12 @@ def post_data():
     data = r.json()
     print(data)
 
-# post_data()
+post_data()
 
 
 def update_data():
     data = {
-        'id': 3,
+        'id': 23,
         'name': 'chomu',
         'roll': 31,
     }
@@ -54,4 +54,4 @@ def delete_data():
     print(data)
 
 
-delete_data()
+#delete_data()
