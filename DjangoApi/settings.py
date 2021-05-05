@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'API',
     'rest_framework',
     'CRUDApi',
+    'FuncBasedAPI',
 ]
 
 MIDDLEWARE = [

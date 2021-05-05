@@ -4,6 +4,8 @@ from . import validatorFunctions
 
 
 class StudentSerializer(serializers.ModelSerializer):
+    name = serializers.CharField(validators=[validatorFunctions.starts_with_d])
+
     class Meta:
         model = Student
         fields = ['name', 'roll', 'city']
