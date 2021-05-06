@@ -15,6 +15,29 @@ from .models import Student
 from rest_framework.renderers import JSONRenderer
 from django.http import HttpResponse, JsonResponse
 
-@api_view(['POST'])
+@api_view(['GET','POST'])
 def hello(request):
-    return Response(request.data)
+    if request.method == "GET":
+        return Response({'msg':'this is get request'})
+    elif request.method == "POST":
+        return Response(request.data)
+
+
+@api_view(['GET','POST'])
+def StudentsInfo(request):
+    if request.method == "GET":
+        id = request.data.get('id')
+        if id is not None:
+            student=Student.objects.get(id=id)
+            serializer=StudentSerializer(student)
+            return Response(serializer.data)
+        student = Student.objects.all()
+        serializer = StudentSerializer(student,many=True)
+        return Response(serializer.data)
+    elif request.method == "POST":
+        serializer=StudentSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'msg':'object created'})
+        else:
+            return Response(serializer.errors)
