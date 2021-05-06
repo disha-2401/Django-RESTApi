@@ -32,10 +32,10 @@ def StudentsInfo(request,pk=None):
         if id is not None:
             student = Student.objects.get(id=id)
             serializer = StudentSerializer(student)
-            return Response(serializer.data)
+            return Response(serializer.data,status=status.HTTP_200_OK)
         student = Student.objects.all()
         serializer = StudentSerializer(student, many=True)
-        return Response(serializer.data)
+        return Response(serializer.data,status=status.HTTP_200_OK)
     elif request.method == "POST":
         serializer = StudentSerializer(data=request.data)
         if serializer.is_valid():
@@ -49,7 +49,7 @@ def StudentsInfo(request,pk=None):
         serializer = StudentSerializer(stu, data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response({'msg': 'complete object updated'})
+            return Response({'msg': 'complete object updated'},status=status.HTTP_200_OK)
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
     elif request.method == "PATCH":
         id = pk
@@ -57,13 +57,13 @@ def StudentsInfo(request,pk=None):
         serializer = StudentSerializer(stu, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
-            return Response({'msg': 'partial object updated'})
+            return Response({'msg': 'partial object updated'},status=status.HTTP_200_OK)
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'DELETE':
         id = pk
         try:
             stu = Student.objects.get(id=id)
         except ObjectDoesNotExist:
-            return Response({'msg': 'object does not exist'})
+            return Response({'msg': 'object does not exist'},status=status.HTTP_404_NOT_FOUND)
         stu.delete()
-        return Response({'msg': 'object deleted'})
+        return Response({'msg': 'object deleted'},status=status.HTTP_200_OK)
