@@ -12,6 +12,7 @@ from rest_framework.response import Response
 from django.core.exceptions import ObjectDoesNotExist
 from .serializer import StudentSerializer
 from .models import Student
+from rest_framework import status
 from rest_framework.renderers import JSONRenderer
 from django.http import HttpResponse, JsonResponse
 
@@ -24,10 +25,10 @@ def hello(request):
         return Response(request.data)
 
 
-@api_view(['GET', 'POST', 'PUT', 'DELETE'])
-def StudentsInfo(request):
+@api_view(['GET', 'POST', 'PUT', 'DELETE','PATCH'])
+def StudentsInfo(request,pk=None):
     if request.method == "GET":
-        id = request.data.get('id')
+        id = pk
         if id is not None:
             student = Student.objects.get(id=id)
             serializer = StudentSerializer(student)
@@ -39,19 +40,27 @@ def StudentsInfo(request):
         serializer = StudentSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response({'msg': 'object created'})
+            return Response({'msg': 'object created'},status=status.HTTP_201_CREATED)
         else:
-            return Response(serializer.errors)
+            return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
     elif request.method == "PUT":
-        id = request.data.get('id')
+        id = pk
+        stu = Student.objects.get(id=id)
+        serializer = StudentSerializer(stu, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'msg': 'complete object updated'})
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == "PATCH":
+        id = pk
         stu = Student.objects.get(id=id)
         serializer = StudentSerializer(stu, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
-            return Response({'msg': 'object updated'})
-        return Response(serializer.errors)
+            return Response({'msg': 'partial object updated'})
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'DELETE':
-        id = request.data.get('id')
+        id = pk
         try:
             stu = Student.objects.get(id=id)
         except ObjectDoesNotExist:

@@ -3,7 +3,7 @@
 import requests
 import json
 
-URL = "http://127.0.0.1:8000/FuncBasedAPI/StudentInfo"
+URL = "http://127.0.0.1:8000/FuncBasedAPI/StudentInfo/"
 
 
 def get_data(id=None):
@@ -33,24 +33,36 @@ def post_data():
     print(data)
 
 
-#post_data()
+# post_data()
 
 
 def update_data():
     data = {
-        'id': 2,
         'name': 'Disha',
-        'roll': 31,
+        'roll': 25,
+        'city':'surat'
     }
     headers = {'content-Type': 'application/json'}
     json_data = json.dumps(data)
-    r = requests.put(url=URL, headers=headers, data=json_data)
+    r = requests.put(url=URL+'2', headers=headers, data=json_data)
     data = r.json()
     print(data)
 
 
-# update_data()
+update_data()
 
+def update_data_patch():
+    data = {
+        'name': 'Disha',
+        'roll': 10,
+    }
+    headers = {'content-Type': 'application/json'}
+    json_data = json.dumps(data)
+    r = requests.patch(url=URL+'2', headers=headers, data=json_data)
+    data = r.json()
+    print(data)
+
+# update_data_patch()
 
 def delete_data():
     data = {'id': 1}
@@ -60,4 +72,4 @@ def delete_data():
     data = r.json()
     print(data)
 
-delete_data()
+# delete_data()
