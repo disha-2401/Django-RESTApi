@@ -33,17 +33,18 @@ def post_data():
     print(data)
 
 
-post_data()
+#post_data()
 
 
 def update_data():
     data = {
-        'id': 23,
-        'name': 'chomu',
+        'id': 2,
+        'name': 'Disha',
         'roll': 31,
     }
+    headers = {'content-Type': 'application/json'}
     json_data = json.dumps(data)
-    r = requests.put(url=URL, data=json_data)
+    r = requests.put(url=URL, headers=headers, data=json_data)
     data = r.json()
     print(data)
 
@@ -52,10 +53,11 @@ def update_data():
 
 
 def delete_data():
-    data = {'id': 3}
+    data = {'id': 1}
+    headers = {'content-Type': 'application/json'}
     json_data = json.dumps(data)
-    r = requests.delete(url=URL, data=json_data)
+    r = requests.delete(url=URL, headers=headers, data=json_data)
     data = r.json()
     print(data)
 
-# delete_data()
+delete_data()
