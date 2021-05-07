@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'CRUDApi',
     'FuncBasedAPI',
     'APIViewClass',
+    'ConcreteView',
 ]
 
 MIDDLEWARE = [
