@@ -20,7 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('API.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('StudentApi/', include('CRUDApi.urls')),
+    path('CrudApi/', include('CRUDApi.urls')),
     path('FuncBasedAPI/',include('FuncBasedAPI.urls')),
     path('APIViewClass/',include('APIViewClass.urls')),
 ]
