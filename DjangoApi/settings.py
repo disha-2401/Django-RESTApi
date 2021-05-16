@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'APIViewClass',
     'ConcreteView',
     'ViewSet',
+    'ModelView',
 ]
 
 MIDDLEWARE = [

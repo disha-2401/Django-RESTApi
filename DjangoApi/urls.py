@@ -23,5 +23,7 @@ urlpatterns = [
     path('CrudApi/', include('CRUDApi.urls')),
     path('FuncBasedAPI/',include('FuncBasedAPI.urls')),
     path('APIViewClass/',include('APIViewClass.urls')),
-    path('ViewSet/',include('ViewSet.urls'))
+    path('ViewSet/',include('ViewSet.urls')),
+    path('ModelView/',include('ModelView.urls')),
+
 ]
