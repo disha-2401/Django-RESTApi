@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1)lkq6rr^z5lwr$mk1ukfytv1filj_tf0t)5dhedy6z9rrr-io
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['84ecdf25599f.ngrok.io']
+ALLOWED_HOSTS = ['84ecdf25599f.ngrok.io','127.0.0.1']
 
 
 # Application definition
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'FuncBasedAPI',
     'APIViewClass',
     'ConcreteView',
+    'ViewSet',
 ]
 
 MIDDLEWARE = [
