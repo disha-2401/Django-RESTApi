@@ -5,6 +5,6 @@ from .models import Student
 # Create your views here.
 
 
-class StudentModelViewSet(viewsets.ModelViewSet):
+class StudentModelViewSet(viewsets.ModelViewSet): #ReadOnlyModelViewSet to make tit readonly
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
