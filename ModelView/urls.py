@@ -8,5 +8,5 @@ router = DefaultRouter()
 # register studentViewSet class
 router.register('studentApi', views.StudentModelViewSet, basename='student')
 urlpatterns = [
-    path('viewSet/', include(router.urls))
+    path('ModelViewSet/', include(router.urls)),
 ]
