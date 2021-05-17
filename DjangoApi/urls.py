@@ -25,5 +25,6 @@ urlpatterns = [
     path('APIViewClass/',include('APIViewClass.urls')),
     path('ViewSet/',include('ViewSet.urls')),
     path('ModelView/',include('ModelView.urls')),
+    path('basicAuth/',include('BasicAuth.urls')),
 
 ]

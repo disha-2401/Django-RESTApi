@@ -6,7 +6,7 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 
 # register studentViewSet class
-# router.register('student', views.StudentModelViewSet, basename='student')
+router.register('studentApi', views.StudentModelAuth, basename='student')
 urlpatterns = [
-    path('ModelViewSet/', include(router.urls)),
+    path('Auth/', include(router.urls)),
 ]
